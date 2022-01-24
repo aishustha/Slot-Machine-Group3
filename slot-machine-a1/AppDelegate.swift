@@ -2,7 +2,12 @@
 //  AppDelegate.swift
 //  slot-machine-a1
 //
-//  Created by Aishwarya Shrestha on 22/01/2022.
+//  Students: Aishwarya Shrestha(301138662), Keshav Dulal(301209947), Poojan Patel(301228811)
+//  Course: Advanced IOS Development - 724
+//  Submission Date: 23/01/2022
+//  Exercise Number: A1 - Slot Machine App - Part 1 - Create the app UI
+//  Github Repo: https://github.com/aishustha/Slot-Machine-Group3
+//  Figma Link: https://www.figma.com/file/Twrlrzgrl6Kvq6w90xJb9f/SlotMachine?node-id=8%3A2
 //
 
 import UIKit
