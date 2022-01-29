@@ -15,6 +15,11 @@
 		6107D1CD279D139600DF66AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1CB279D139600DF66AC /* Main.storyboard */; };
 		6107D1CF279D139600DF66AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1CE279D139600DF66AC /* Assets.xcassets */; };
 		6107D1D2279D139600DF66AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1D0279D139600DF66AC /* LaunchScreen.storyboard */; };
+		69BB0211279DD29F0072239E /* BackgroundImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BB0210279DD29F0072239E /* BackgroundImg.swift */; };
+		69BB0214279DD32C0072239E /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BB0213279DD32C0072239E /* GameObject.swift */; };
+		69BB0216279DD3A90072239E /* GameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BB0215279DD3A90072239E /* GameProtocol.swift */; };
+		69BB021A279DDFC10072239E /* Quit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BB0219279DDFC10072239E /* Quit.swift */; };
+		69BB021C279DE3830072239E /* Spin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BB021B279DE3830072239E /* Spin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		6107D1CC279D139600DF66AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6107D1CE279D139600DF66AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6107D1D1279D139600DF66AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69BB0210279DD29F0072239E /* BackgroundImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImg.swift; sourceTree = "<group>"; };
+		69BB0213279DD32C0072239E /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		69BB0215279DD3A90072239E /* GameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProtocol.swift; sourceTree = "<group>"; };
+		69BB0219279DDFC10072239E /* Quit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quit.swift; sourceTree = "<group>"; };
+		69BB021B279DE3830072239E /* Spin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,8 @@
 		6107D1C0279D139600DF66AC /* slot-machine-a1 */ = {
 			isa = PBXGroup;
 			children = (
+				69BB0212279DD3090072239E /* Core */,
+				69BB020F279DD2650072239E /* SlotObjects */,
 				6107D1C1279D139600DF66AC /* AppDelegate.swift */,
 				6107D1C3279D139600DF66AC /* GameScene.sks */,
 				6107D1C5279D139600DF66AC /* Actions.sks */,
@@ -69,6 +81,25 @@
 				6107D1D0279D139600DF66AC /* LaunchScreen.storyboard */,
 			);
 			path = "slot-machine-a1";
+			sourceTree = "<group>";
+		};
+		69BB020F279DD2650072239E /* SlotObjects */ = {
+			isa = PBXGroup;
+			children = (
+				69BB0210279DD29F0072239E /* BackgroundImg.swift */,
+				69BB0219279DDFC10072239E /* Quit.swift */,
+				69BB021B279DE3830072239E /* Spin.swift */,
+			);
+			path = SlotObjects;
+			sourceTree = "<group>";
+		};
+		69BB0212279DD3090072239E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				69BB0213279DD32C0072239E /* GameObject.swift */,
+				69BB0215279DD3A90072239E /* GameProtocol.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +178,11 @@
 				6107D1C8279D139600DF66AC /* GameScene.swift in Sources */,
 				6107D1CA279D139600DF66AC /* GameViewController.swift in Sources */,
 				6107D1C2279D139600DF66AC /* AppDelegate.swift in Sources */,
+				69BB0211279DD29F0072239E /* BackgroundImg.swift in Sources */,
+				69BB0214279DD32C0072239E /* GameObject.swift in Sources */,
+				69BB0216279DD3A90072239E /* GameProtocol.swift in Sources */,
+				69BB021A279DDFC10072239E /* Quit.swift in Sources */,
+				69BB021C279DE3830072239E /* Spin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
