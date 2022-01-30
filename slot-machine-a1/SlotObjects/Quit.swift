@@ -12,10 +12,18 @@ class Quit : GameObject
 {
     init()
     {
-        super.init(imageString: "quit", initialScale: 3.0)
+        super.init(imageString: "quit", initialScale: 0.2)
+        Start()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //Initialization
+    override func Start()
+    {
+        //layering top of each other
+        zPosition = 1
     }
 }

@@ -38,14 +38,13 @@ class GameScene: SKScene {
         
         // Adding quit button to scene
         quit = Quit()
-        quit?.position = CGPoint(x:240,y:-519)
-        quit?.zPosition = 1
-        //addChild(quit!)
+        quit?.position = CGPoint(x:190,y: 487)
+        addChild(quit!)
         
         // Adding spin button to scene
         spin = Spin()
-        spin?.position = CGPoint(x: 380, y: -1200)
-        //addChild(spin!)
+        spin?.position = CGPoint(x: 1.45, y: -400)
+        addChild(spin!)
         
         
         
@@ -97,6 +96,8 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        //backgroundImg?.Update()
+        backgroundImg?.Update()
+        quit?.Update()
+        spin?.Update()
     }
 }
