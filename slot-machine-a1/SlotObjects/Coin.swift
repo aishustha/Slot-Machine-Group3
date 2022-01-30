@@ -1,18 +1,18 @@
 //
-//  BackgroundImg.swift
+//  Coin.swift
 //  slot-machine-a1
 //
-//  Created by Poojan on 1/23/22.
+//  Created by Aishwarya Shrestha on 30/01/2022.
 //
 
 import GameplayKit
 import SpriteKit
 
-class BackgroundImg : GameObject
+class Coin : GameObject
 {
     init()
     {
-        super.init(imageString: "got", initialScale: 1.33)
+        super.init(imageString: "coins", initialScale: 0.1)
         Start()
     }
     
@@ -24,7 +24,6 @@ class BackgroundImg : GameObject
     override func Start()
     {
         //layering top of each other
-        zPosition = 0
+        zPosition = 1
     }
-
 }

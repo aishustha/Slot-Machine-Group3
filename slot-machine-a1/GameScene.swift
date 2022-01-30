@@ -22,9 +22,34 @@ var screenHeight: CGFloat?
 
 class GameScene: SKScene {
     
+    //initializers
     var backgroundImg : BackgroundImg?
     var quit : Quit?
     var spin : Spin?
+    var reset: Reset?
+    var jackpot: Jackpot?
+    var coin: Coin?
+    var plusBtn: Plus?
+    var minusBtn: Minus?
+    
+    
+    var firstImage = SKSpriteNode()
+    var secondImage = SKSpriteNode()
+    var thirdImage = SKSpriteNode()
+    
+    var textures = [SKTexture]()
+    
+    
+    var CreditLabel: SKLabelNode!
+    var BetLabel: SKLabelNode!
+    var JackpotAmount: SKLabelNode!
+    var JackpotMessage: SKLabelNode!
+   
+   
+    var initialCredit: Int = 200
+    var currentBet: Int = 0
+    var jackpotAmount:Int = 0
+    var remainingCredit: Int = 0
     
     override func didMove(to view: SKView) {
         screenWidth = frame.width
@@ -33,24 +58,100 @@ class GameScene: SKScene {
         
         // Adding background to scene
         backgroundImg = BackgroundImg()
-        backgroundImg?.position = CGPoint(x:0,y: -300)
+        backgroundImg?.position = CGPoint(x: 0,y: 0)
+        backgroundImg?.alpha = 0.5
         addChild(backgroundImg!)
         
         // Adding quit button to scene
         quit = Quit()
+        quit?.name = "quit"
         quit?.position = CGPoint(x:190,y: 487)
         addChild(quit!)
         
         // Adding spin button to scene
         spin = Spin()
-        spin?.position = CGPoint(x: 1.45, y: -400)
+        spin?.name = "spin"
+        spin?.position = CGPoint(x: 1.45, y: -410)
         addChild(spin!)
         
         
+        // Adding reset button to scene
+        reset = Reset()
+        reset?.name = "reset"
+        reset?.position = CGPoint(x: -230, y: -570)
+        addChild(reset!)
+        
+        // Adding jackpot img to scene
+        jackpot = Jackpot()
+        jackpot?.name = "Jackpot"
+        jackpot?.position = CGPoint(x: -219, y: 466)
+        addChild(jackpot!)
+        
+        // adding credit label
+        CreditLabel = SKLabelNode(fontNamed: "Arial")
+        CreditLabel.text = String(initialCredit)
+        CreditLabel.color = .white
+        CreditLabel.position = CGPoint(x: -190, y: 544)
+        CreditLabel.zPosition = 1
+        addChild(CreditLabel)
+        
+        // adding bet label
+        BetLabel = SKLabelNode(fontNamed: "Arial")
+        BetLabel.text = String(currentBet)
+        BetLabel.color = .white
+        BetLabel.position = CGPoint(x: 170, y: -585)
+        BetLabel.zPosition = 1
+        addChild(BetLabel)
+        
+        // adding jackpot amount label
+        JackpotAmount = SKLabelNode(fontNamed: "Arial")
+        JackpotAmount.color = .white
+        JackpotAmount.position = CGPoint(x: 50, y: 450)
+        JackpotAmount.zPosition = 1
+        addChild(JackpotAmount)
+        
+        // adding jackpot message label
+        JackpotMessage = SKLabelNode(fontNamed: "Arial")
+        JackpotMessage.color = .white
+        JackpotMessage.position = CGPoint(x: -65, y: 450)
+        JackpotMessage.zPosition = 1
+        addChild(JackpotMessage)
+
+    
+        // Adding coin img to scene
+        coin = Coin()
+        coin?.name = "Coin"
+        coin?.position = CGPoint(x: -262, y: 556)
+        addChild(coin!)
+        
+
+        // binding spritekit nodes to objects
+        firstImage = (self.childNode(withName: "image1") as? SKSpriteNode)!
+        secondImage = (self.childNode(withName: "image2") as? SKSpriteNode)!
+        thirdImage = (self.childNode(withName: "image3") as? SKSpriteNode)!
+       
+        //appending images to textures array
+        textures.append(SKTexture(imageNamed: "5"))
+        textures.append(SKTexture(imageNamed: "6"))
+        textures.append(SKTexture(imageNamed: "7"))
+        textures.append(SKTexture(imageNamed: "8"))
         
         
+    
+        // Adding bet plus button
+        plusBtn = Plus()
+        plusBtn?.name = "increase"
+        plusBtn?.position = CGPoint(x: 85, y: -570)
+        plusBtn?.zPosition = 1
+        addChild(plusBtn!)
         
-        }
+        // Adding bet minus button
+        minusBtn = Minus()
+        minusBtn?.name = "decrease"
+        minusBtn?.position = CGPoint(x: 255, y: -570)
+        minusBtn?.zPosition = 1
+        addChild(minusBtn!)
+    }
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -74,13 +175,126 @@ class GameScene: SKScene {
         {
             self.touchDown(atPoint: t.location(in: self))
             let current_node = atPoint(t.location(in: self))
-            if (current_node.name == "quit"){
+            
+            if current_node.name == "spin" {
+            if currentBet == 0
+            {
+                let alert = UIAlertController(title: "Can't place $0 bet", message: "Please choose amount to bet.", preferredStyle:UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Got it!", style: UIAlertAction.Style.default, handler: nil))
+                self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+            else {
+                let rand = Int(arc4random_uniform(UInt32(textures.count)))
+                let rand2 = Int(arc4random_uniform(UInt32(textures.count)))
+                let rand3 = Int(arc4random_uniform(UInt32(textures.count)))
+                                
+                let texture = textures[rand] as SKTexture
+                let texture2 = textures[rand2] as SKTexture
+                let texture3 = textures[rand3] as SKTexture
+                
+                firstImage.texture = texture
+                secondImage.texture = texture2
+                thirdImage.texture = texture3
+                
+                
+                if (texture == texture2 && texture2 == texture3)
+                {
+                    JackpotMessage.text = "You Win!"
+                    
+                    jackpotAmount = (currentBet * 2)
+                    JackpotAmount.text = String(jackpotAmount)
+                  
+                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                }
+                else
+                {
+                    JackpotMessage.text = "Try again!"
+                    
+                    jackpotAmount = 0
+                    self.JackpotAmount.text = String(jackpotAmount)
+                    
+                    // update remaining credit after every lose
+                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                    }
+                }
+            }
+            else if current_node.name == "increase"{
+               
+                
+                JackpotAmount.text = ""
+                JackpotMessage.text = ""
+                
+                currentBet = currentBet + 1
+                
+                let c = self.updateCredit(currentBet: currentBet)
+                
+                BetLabel.text = String(currentBet)
+                CreditLabel.text = String(c)
+                
+                //To prevent user to place bet when user has no credit
+                if c <= 0
+                {
+                    let alert = UIAlertController(title: "Out of credit!", message: "You don't have enough credit to bet!", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Got it!", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                    
+                   // isUserInteractionEnabled = false
+                }
+                
+            }
+            else if current_node.name == "decrease"{
+                
+                if currentBet == 0
+                {
+                    print("Error")
+                }
+                else
+                {
+                    currentBet = currentBet - 1
+                    remainingCredit = (remainingCredit + 1)
+                    
+                    BetLabel.text = String(currentBet)
+                    CreditLabel.text = String(remainingCredit)
+                }
+            }
+   
+            else if current_node.name == "quit" {
                 exit(0)
+            }
+            
+            else if current_node.name == "reset"{
+                
+                initialCredit = 200
+                currentBet = 0
+                CreditLabel.text = String(initialCredit)
+                BetLabel.text = String(currentBet)
             }
             
         }
     }
     
+    
+    //updating available credit after every bet
+    func updateCredit(currentBet: Int) -> Int
+    {
+        remainingCredit = (initialCredit - currentBet)
+        return remainingCredit
+    }
+    
+    //function to update available credit after every spin
+    func updateRemainingCredit(winningAmount:Int)
+    {
+        currentBet = 0
+        remainingCredit += winningAmount
+        initialCredit = remainingCredit
+        CreditLabel.text = String(remainingCredit)
+        BetLabel.text = String(currentBet)
+    }
+    
+    func quitGame()
+    {
+        exit(0)
+    }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
@@ -96,8 +310,9 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        backgroundImg?.Update()
-        quit?.Update()
-        spin?.Update()
+        
     }
 }
+
+
+
