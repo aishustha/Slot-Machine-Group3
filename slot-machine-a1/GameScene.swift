@@ -175,8 +175,11 @@ class GameScene: SKScene {
         for t in touches
         {
             self.touchDown(atPoint: t.location(in: self))
+            
+            // Current node - Node that is clicked
             let current_node = atPoint(t.location(in: self))
             
+            // Conditions to check which button is clicked based on labels
             if current_node.name == "spin" {
             if currentBet == 0
             {
@@ -185,6 +188,8 @@ class GameScene: SKScene {
                 self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
             else {
+                
+                // Random textures to display random image from available images
                 let randX = Int(arc4random_uniform(UInt32(textures.count)))
                 let randY = Int(arc4random_uniform(UInt32(textures.count)))
                 let randZ = Int(arc4random_uniform(UInt32(textures.count)))
@@ -203,7 +208,7 @@ class GameScene: SKScene {
                 if (jackporWin == jackpotTry)
                 {
                     let alert = UIAlertController(title: "JackPot !!!", message: "You won a $3000 Jackpot", preferredStyle:UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Yayy! !", style: UIAlertAction.Style.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Yayy !!", style: UIAlertAction.Style.default, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     
                     jackpotAmount = jackpotAmount + 3000
@@ -213,7 +218,7 @@ class GameScene: SKScene {
                 }
                 
     
-                
+                // Winning condition
                 if (texture1 == texture2 && texture2 == texture3)
                 {
                     JackpotMessage.text = "You Won!"
@@ -224,6 +229,7 @@ class GameScene: SKScene {
                     // Update credits
                     self.updateRemainingCredit(winningAmount: jackpotAmount)
                 }
+                // if user lost
                 else
                 {
                     JackpotMessage.text = "Try again!"
@@ -236,6 +242,7 @@ class GameScene: SKScene {
                     }
                 }
             }
+            // Increasing bet
             else if current_node.name == "increase"{
                
                 
@@ -260,8 +267,10 @@ class GameScene: SKScene {
                 }
                 
             }
+            // Decreasing bet
             else if current_node.name == "decrease"{
                 
+                // If current bet is 0 and user tries to decrease it show alert
                 if currentBet == 0
                 {
                     let alert = UIAlertController(title: "Cannot decrease!", message: "The bet amount is already at 0$ cannot decrease more.", preferredStyle: UIAlertController.Style.alert)
@@ -269,6 +278,7 @@ class GameScene: SKScene {
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)                }
                 else
                 {
+                    // Decreasing bet and increasing available credits
                     currentBet = currentBet - 10
                     remainingCredit = remainingCredit + 10
                     
@@ -278,11 +288,14 @@ class GameScene: SKScene {
             }
    
             else if current_node.name == "quit" {
+                
+                // Quit button - Exit app
                 exit(0)
             }
             
             else if current_node.name == "reset"{
                 
+                // Reset - Reset initial credit to 200 $ and bet to 0 $
                 initialCredit = 200
                 currentBet = 0
                 CreditLabel.text = String(initialCredit)
@@ -310,11 +323,7 @@ class GameScene: SKScene {
         BetLabel.text = String(currentBet)
     }
     
-    // Quit button operation
-    func quitGame()
-    {
-        exit(0)
-    }
+   
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
