@@ -32,20 +32,21 @@ class GameScene: SKScene {
     var plusBtn: Plus?
     var minusBtn: Minus?
     
-    
+    // Using images as nodes to change on button click
     var firstImage = SKSpriteNode()
     var secondImage = SKSpriteNode()
     var thirdImage = SKSpriteNode()
     
+    // Array of texture to show the slot machine images
     var textures = [SKTexture]()
     
-    
+    // Labels
     var CreditLabel: SKLabelNode!
     var BetLabel: SKLabelNode!
     var JackpotAmount: SKLabelNode!
     var JackpotMessage: SKLabelNode!
    
-   
+   // Credits, bets and jackpot amount
     var initialCredit: Int = 200
     var currentBet: Int = 0
     var jackpotAmount:Int = 0
@@ -179,31 +180,48 @@ class GameScene: SKScene {
             if current_node.name == "spin" {
             if currentBet == 0
             {
-                let alert = UIAlertController(title: "Can't place $0 bet", message: "Please choose amount to bet.", preferredStyle:UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Got it!", style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: "Not allowed", message: "You cannot spin with 0$ bet. Please add bet", preferredStyle:UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
             else {
-                let rand = Int(arc4random_uniform(UInt32(textures.count)))
-                let rand2 = Int(arc4random_uniform(UInt32(textures.count)))
-                let rand3 = Int(arc4random_uniform(UInt32(textures.count)))
+                let randX = Int(arc4random_uniform(UInt32(textures.count)))
+                let randY = Int(arc4random_uniform(UInt32(textures.count)))
+                let randZ = Int(arc4random_uniform(UInt32(textures.count)))
                                 
-                let texture = textures[rand] as SKTexture
-                let texture2 = textures[rand2] as SKTexture
-                let texture3 = textures[rand3] as SKTexture
+                let texture1 = textures[randX] as SKTexture
+                let texture2 = textures[randY] as SKTexture
+                let texture3 = textures[randZ] as SKTexture
                 
-                firstImage.texture = texture
+                firstImage.texture = texture1
                 secondImage.texture = texture2
                 thirdImage.texture = texture3
                 
-                
-                if (texture == texture2 && texture2 == texture3)
+                // Condition to check if user won jackpot
+                var jackpotTry = Int.random(in: 1...5)
+                var jackporWin = Int.random(in: 1...5)
+                if (jackporWin == jackpotTry)
                 {
-                    JackpotMessage.text = "You Win!"
+                    let alert = UIAlertController(title: "JackPot !!!", message: "You won a $3000 Jackpot", preferredStyle:UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Yayy! !", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                    
+                    jackpotAmount = jackpotAmount + 3000
+                    JackpotAmount.text = String(jackpotAmount)
+                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                
+                }
+                
+    
+                
+                if (texture1 == texture2 && texture2 == texture3)
+                {
+                    JackpotMessage.text = "You Won!"
                     
                     jackpotAmount = (currentBet * 2)
                     JackpotAmount.text = String(jackpotAmount)
                   
+                    // Update credits
                     self.updateRemainingCredit(winningAmount: jackpotAmount)
                 }
                 else
@@ -213,7 +231,7 @@ class GameScene: SKScene {
                     jackpotAmount = 0
                     self.JackpotAmount.text = String(jackpotAmount)
                     
-                    // update remaining credit after every lose
+                    // Update credits
                     self.updateRemainingCredit(winningAmount: jackpotAmount)
                     }
                 }
@@ -224,18 +242,18 @@ class GameScene: SKScene {
                 JackpotAmount.text = ""
                 JackpotMessage.text = ""
                 
-                currentBet = currentBet + 1
+                currentBet = currentBet + 10
                 
-                let c = self.updateCredit(currentBet: currentBet)
+                let credit = self.updateCredit(currentBet: currentBet)
                 
                 BetLabel.text = String(currentBet)
-                CreditLabel.text = String(c)
+                CreditLabel.text = String(credit)
                 
-                //To prevent user to place bet when user has no credit
-                if c <= 0
+                // Check if user has enough credits to bet
+                if credit <= 0
                 {
-                    let alert = UIAlertController(title: "Out of credit!", message: "You don't have enough credit to bet!", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Got it!", style: UIAlertAction.Style.default, handler: nil))
+                    let alert = UIAlertController(title: "Not enough credit!", message: "No more credits to bet. Please add more credits", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     
                    // isUserInteractionEnabled = false
@@ -246,12 +264,13 @@ class GameScene: SKScene {
                 
                 if currentBet == 0
                 {
-                    print("Error")
-                }
+                    let alert = UIAlertController(title: "Cannot decrease!", message: "The bet amount is already at 0$ cannot decrease more.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)                }
                 else
                 {
-                    currentBet = currentBet - 1
-                    remainingCredit = (remainingCredit + 1)
+                    currentBet = currentBet - 10
+                    remainingCredit = remainingCredit + 10
                     
                     BetLabel.text = String(currentBet)
                     CreditLabel.text = String(remainingCredit)
@@ -274,14 +293,14 @@ class GameScene: SKScene {
     }
     
     
-    //updating available credit after every bet
+    // Update credit
     func updateCredit(currentBet: Int) -> Int
     {
         remainingCredit = (initialCredit - currentBet)
         return remainingCredit
     }
     
-    //function to update available credit after every spin
+    // Update available credit
     func updateRemainingCredit(winningAmount:Int)
     {
         currentBet = 0
@@ -291,6 +310,7 @@ class GameScene: SKScene {
         BetLabel.text = String(currentBet)
     }
     
+    // Quit button operation
     func quitGame()
     {
         exit(0)
