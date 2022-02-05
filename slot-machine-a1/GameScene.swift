@@ -152,6 +152,25 @@ class GameScene: SKScene {
         minusBtn?.position = CGPoint(x: 255, y: -570)
         minusBtn?.zPosition = 1
         addChild(minusBtn!)
+        
+        // background music
+//        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicSerious.mp3")
+        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicLight.mp3")
+        self.addChild(backgroundMusic)
+        backgroundMusic.autoplayLooped = true // infinte loop
+        
+        // preload / prewarm impulse sounds
+//        do{
+//            let sounds:[String] = ["slotMachineRunning", "jackpot", "swordSpin", "error"]
+//
+//            for sound in sounds{
+//                let path: String = Bundle.main.path(forResource: sound, ofType: "mp3")!
+//                let url: URL = URL(fileURLWithPath: path)
+//                let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url)
+//                player.prepareToPlay()
+//            }
+//        }
+//        catch{}
     }
     
     
@@ -186,6 +205,15 @@ class GameScene: SKScene {
                 let alert = UIAlertController(title: "Not allowed", message: "You cannot spin with 0$ bet. Please add bet", preferredStyle:UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                
+                // play sound #1
+                // scene.run(SKAction.playSoundFileNamed("yay", waitForCompletion: false))
+                
+                // play sound #2
+//                let errorFx = SKAudioNode(fileNamed: "error.mp3")
+//                self.addChild(errorFx)
+//                errorFx.autoplayLooped = false // infinte loop
+
             }
             else {
                 

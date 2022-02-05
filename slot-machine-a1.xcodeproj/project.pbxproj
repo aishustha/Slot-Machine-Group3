@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3A5B6C27AEB45A00E1FC4B /* jackpot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B6B27AEB45A00E1FC4B /* jackpot.mp3 */; };
+		2C3A5B6E27AEB85500E1FC4B /* slotMachineRunning.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B6D27AEB85500E1FC4B /* slotMachineRunning.wav */; };
+		2C3A5B7327AEBBE800E1FC4B /* backgroundMusicSerious.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7127AEBBE800E1FC4B /* backgroundMusicSerious.mp3 */; };
+		2C3A5B7427AEBBE800E1FC4B /* backgroundMusicLight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7227AEBBE800E1FC4B /* backgroundMusicLight.mp3 */; };
+		2C3A5B7627AEBD1800E1FC4B /* swordSpin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7527AEBD1800E1FC4B /* swordSpin.mp3 */; };
+		2C3A5B7827AEBEB500E1FC4B /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7727AEBEB400E1FC4B /* error.mp3 */; };
 		6107D1C2279D139600DF66AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6107D1C1279D139600DF66AC /* AppDelegate.swift */; };
 		6107D1C4279D139600DF66AC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1C3279D139600DF66AC /* GameScene.sks */; };
 		6107D1C6279D139600DF66AC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1C5279D139600DF66AC /* Actions.sks */; };
@@ -28,6 +34,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C3A5B6B27AEB45A00E1FC4B /* jackpot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jackpot.mp3; sourceTree = "<group>"; };
+		2C3A5B6D27AEB85500E1FC4B /* slotMachineRunning.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slotMachineRunning.wav; sourceTree = "<group>"; };
+		2C3A5B7127AEBBE800E1FC4B /* backgroundMusicSerious.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusicSerious.mp3; sourceTree = "<group>"; };
+		2C3A5B7227AEBBE800E1FC4B /* backgroundMusicLight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusicLight.mp3; sourceTree = "<group>"; };
+		2C3A5B7527AEBD1800E1FC4B /* swordSpin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swordSpin.mp3; sourceTree = "<group>"; };
+		2C3A5B7727AEBEB400E1FC4B /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		6107D1BE279D139600DF66AC /* slot-machine-a1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slot-machine-a1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6107D1C1279D139600DF66AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6107D1C3279D139600DF66AC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -60,6 +72,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3A5B6927AEB3B800E1FC4B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2C3A5B6A27AEB3C400E1FC4B /* audio */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2C3A5B6A27AEB3C400E1FC4B /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				2C3A5B7227AEBBE800E1FC4B /* backgroundMusicLight.mp3 */,
+				2C3A5B7127AEBBE800E1FC4B /* backgroundMusicSerious.mp3 */,
+				2C3A5B6D27AEB85500E1FC4B /* slotMachineRunning.wav */,
+				2C3A5B6B27AEB45A00E1FC4B /* jackpot.mp3 */,
+				2C3A5B7527AEBD1800E1FC4B /* swordSpin.mp3 */,
+				2C3A5B7727AEBEB400E1FC4B /* error.mp3 */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
 		6107D1B5279D139500DF66AC = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +112,7 @@
 		6107D1C0279D139600DF66AC /* slot-machine-a1 */ = {
 			isa = PBXGroup;
 			children = (
+				2C3A5B6927AEB3B800E1FC4B /* Assets */,
 				69BB0212279DD3090072239E /* Core */,
 				69BB020F279DD2650072239E /* SlotObjects */,
 				6107D1C1279D139600DF66AC /* AppDelegate.swift */,
@@ -176,10 +210,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6107D1CD279D139600DF66AC /* Main.storyboard in Resources */,
+				2C3A5B7427AEBBE800E1FC4B /* backgroundMusicLight.mp3 in Resources */,
+				2C3A5B6E27AEB85500E1FC4B /* slotMachineRunning.wav in Resources */,
+				2C3A5B7627AEBD1800E1FC4B /* swordSpin.mp3 in Resources */,
+				2C3A5B7327AEBBE800E1FC4B /* backgroundMusicSerious.mp3 in Resources */,
+				2C3A5B6C27AEB45A00E1FC4B /* jackpot.mp3 in Resources */,
 				6107D1C4279D139600DF66AC /* GameScene.sks in Resources */,
 				6107D1CF279D139600DF66AC /* Assets.xcassets in Resources */,
 				6107D1D2279D139600DF66AC /* LaunchScreen.storyboard in Resources */,
 				6107D1C6279D139600DF66AC /* Actions.sks in Resources */,
+				2C3A5B7827AEBEB500E1FC4B /* error.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
