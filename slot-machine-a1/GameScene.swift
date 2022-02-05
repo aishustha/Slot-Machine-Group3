@@ -45,13 +45,7 @@ class GameScene: SKScene {
     var BetLabel: SKLabelNode!
     var JackpotAmount: SKLabelNode!
     var JackpotMessage: SKLabelNode!
-   
-   // Credits, bets and jackpot amount
-    var initialCredit: Int = 200
-    var currentBet: Int = 0
-    var jackpotAmount:Int = 0
-    var remainingCredit: Int = 0
-    
+     
     override func didMove(to view: SKView) {
         screenWidth = frame.width
         screenHeight = frame.height
@@ -90,7 +84,7 @@ class GameScene: SKScene {
         
         // adding credit label
         CreditLabel = SKLabelNode(fontNamed: "Arial")
-        CreditLabel.text = String(initialCredit)
+        CreditLabel.text = String(ScoreManager.Credit)
         CreditLabel.color = .white
         CreditLabel.position = CGPoint(x: -190, y: 544)
         CreditLabel.zPosition = 1
@@ -98,7 +92,7 @@ class GameScene: SKScene {
         
         // adding bet label
         BetLabel = SKLabelNode(fontNamed: "Arial")
-        BetLabel.text = String(currentBet)
+        BetLabel.text = String(ScoreManager.Bet)
         BetLabel.color = .white
         BetLabel.position = CGPoint(x: 170, y: -585)
         BetLabel.zPosition = 1
@@ -200,7 +194,7 @@ class GameScene: SKScene {
             
             // Conditions to check which button is clicked based on labels
             if current_node.name == "spin" {
-            if currentBet == 0
+            if ScoreManager.Bet == 0
             {
                 let alert = UIAlertController(title: "Not allowed", message: "You cannot spin with 0$ bet. Please add bet", preferredStyle:UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
@@ -239,9 +233,9 @@ class GameScene: SKScene {
                     alert.addAction(UIAlertAction(title: "Yayy !!", style: UIAlertAction.Style.default, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     
-                    jackpotAmount = jackpotAmount + 3000
-                    JackpotAmount.text = String(jackpotAmount)
-                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                    ScoreManager.Jackpot = ScoreManager.Jackpot + 3000
+                    JackpotAmount.text = String(ScoreManager.Jackpot)
+                    self.updateRemainingCredit(winningAmount: ScoreManager.Jackpot)
                 
                 }
                 
@@ -251,22 +245,22 @@ class GameScene: SKScene {
                 {
                     JackpotMessage.text = "You Won!"
                     
-                    jackpotAmount = (currentBet * 2)
-                    JackpotAmount.text = String(jackpotAmount)
+                    ScoreManager.Jackpot = (ScoreManager.Bet * 2)
+                    JackpotAmount.text = String(ScoreManager.Jackpot)
                   
                     // Update credits
-                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                    self.updateRemainingCredit(winningAmount: ScoreManager.Jackpot)
                 }
                 // if user lost
                 else
                 {
                     JackpotMessage.text = "Try again!"
                     
-                    jackpotAmount = 0
-                    self.JackpotAmount.text = String(jackpotAmount)
+                    ScoreManager.Jackpot = 0
+                    self.JackpotAmount.text = String(ScoreManager.Jackpot)
                     
                     // Update credits
-                    self.updateRemainingCredit(winningAmount: jackpotAmount)
+                    self.updateRemainingCredit(winningAmount: ScoreManager.Jackpot)
                     }
                 }
             }
@@ -277,11 +271,11 @@ class GameScene: SKScene {
                 JackpotAmount.text = ""
                 JackpotMessage.text = ""
                 
-                currentBet = currentBet + 10
+                ScoreManager.Bet = ScoreManager.Bet + 10
                 
-                let credit = self.updateCredit(currentBet: currentBet)
+                let credit = self.updateCredit(currentBet: ScoreManager.Bet)
                 
-                BetLabel.text = String(currentBet)
+                BetLabel.text = String(ScoreManager.Bet)
                 CreditLabel.text = String(credit)
                 
                 // Check if user has enough credits to bet
@@ -299,7 +293,7 @@ class GameScene: SKScene {
             else if current_node.name == "decrease"{
                 
                 // If current bet is 0 and user tries to decrease it show alert
-                if currentBet == 0
+                if ScoreManager.Bet == 0
                 {
                     let alert = UIAlertController(title: "Cannot decrease!", message: "The bet amount is already at 0$ cannot decrease more.", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
@@ -307,11 +301,11 @@ class GameScene: SKScene {
                 else
                 {
                     // Decreasing bet and increasing available credits
-                    currentBet = currentBet - 10
-                    remainingCredit = remainingCredit + 10
+                    ScoreManager.Bet = ScoreManager.Bet - 10
+                    ScoreManager.Coins = ScoreManager.Coins + 10
                     
-                    BetLabel.text = String(currentBet)
-                    CreditLabel.text = String(remainingCredit)
+                    BetLabel.text = String(ScoreManager.Bet)
+                    CreditLabel.text = String(ScoreManager.Coins)
                 }
             }
    
@@ -324,10 +318,10 @@ class GameScene: SKScene {
             else if current_node.name == "reset"{
                 
                 // Reset - Reset initial credit to 200 $ and bet to 0 $
-                initialCredit = 200
-                currentBet = 0
-                CreditLabel.text = String(initialCredit)
-                BetLabel.text = String(currentBet)
+                ScoreManager.Credit = 200
+                ScoreManager.Bet = 0
+                CreditLabel.text = String(ScoreManager.Credit)
+                BetLabel.text = String(ScoreManager.Bet)
             }
             
         }
@@ -337,18 +331,18 @@ class GameScene: SKScene {
     // Update credit
     func updateCredit(currentBet: Int) -> Int
     {
-        remainingCredit = (initialCredit - currentBet)
-        return remainingCredit
+        ScoreManager.Coins = (ScoreManager.Credit - ScoreManager.Bet)
+        return ScoreManager.Coins
     }
     
     // Update available credit
     func updateRemainingCredit(winningAmount:Int)
     {
-        currentBet = 0
-        remainingCredit += winningAmount
-        initialCredit = remainingCredit
-        CreditLabel.text = String(remainingCredit)
-        BetLabel.text = String(currentBet)
+        ScoreManager.Bet = 0
+        ScoreManager.Coins += winningAmount
+        ScoreManager.Credit = ScoreManager.Coins
+        CreditLabel.text = String(ScoreManager.Coins)
+        BetLabel.text = String(ScoreManager.Bet)
     }
     
    
@@ -364,10 +358,8 @@ class GameScene: SKScene {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        
     }
 }
 

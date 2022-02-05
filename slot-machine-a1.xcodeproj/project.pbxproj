@@ -13,6 +13,8 @@
 		2C3A5B7427AEBBE800E1FC4B /* backgroundMusicLight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7227AEBBE800E1FC4B /* backgroundMusicLight.mp3 */; };
 		2C3A5B7627AEBD1800E1FC4B /* swordSpin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7527AEBD1800E1FC4B /* swordSpin.mp3 */; };
 		2C3A5B7827AEBEB500E1FC4B /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7727AEBEB400E1FC4B /* error.mp3 */; };
+		2C3A5B7B27AEC27500E1FC4B /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7A27AEC27500E1FC4B /* ScoreManager.swift */; };
+		2C3A5B7E27AEC44300E1FC4B /* SpinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A5B7D27AEC44300E1FC4B /* SpinManager.swift */; };
 		6107D1C2279D139600DF66AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6107D1C1279D139600DF66AC /* AppDelegate.swift */; };
 		6107D1C4279D139600DF66AC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1C3279D139600DF66AC /* GameScene.sks */; };
 		6107D1C6279D139600DF66AC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6107D1C5279D139600DF66AC /* Actions.sks */; };
@@ -40,6 +42,8 @@
 		2C3A5B7227AEBBE800E1FC4B /* backgroundMusicLight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusicLight.mp3; sourceTree = "<group>"; };
 		2C3A5B7527AEBD1800E1FC4B /* swordSpin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swordSpin.mp3; sourceTree = "<group>"; };
 		2C3A5B7727AEBEB400E1FC4B /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
+		2C3A5B7A27AEC27500E1FC4B /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		2C3A5B7D27AEC44300E1FC4B /* SpinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinManager.swift; sourceTree = "<group>"; };
 		6107D1BE279D139600DF66AC /* slot-machine-a1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slot-machine-a1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6107D1C1279D139600DF66AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6107D1C3279D139600DF66AC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 			path = audio;
 			sourceTree = "<group>";
 		};
+		2C3A5B7927AEC26300E1FC4B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2C3A5B7A27AEC27500E1FC4B /* ScoreManager.swift */,
+				2C3A5B7D27AEC44300E1FC4B /* SpinManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		6107D1B5279D139500DF66AC = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +125,7 @@
 		6107D1C0279D139600DF66AC /* slot-machine-a1 */ = {
 			isa = PBXGroup;
 			children = (
+				2C3A5B7927AEC26300E1FC4B /* Managers */,
 				2C3A5B6927AEB3B800E1FC4B /* Assets */,
 				69BB0212279DD3090072239E /* Core */,
 				69BB020F279DD2650072239E /* SlotObjects */,
@@ -236,6 +250,8 @@
 				61E7AED027A6F4210080A2FC /* Jackpot.swift in Sources */,
 				61E7AECE27A6EF920080A2FC /* Reset.swift in Sources */,
 				6107D1C2279D139600DF66AC /* AppDelegate.swift in Sources */,
+				2C3A5B7E27AEC44300E1FC4B /* SpinManager.swift in Sources */,
+				2C3A5B7B27AEC27500E1FC4B /* ScoreManager.swift in Sources */,
 				69BB0211279DD29F0072239E /* BackgroundImg.swift in Sources */,
 				61E7AED627A710730080A2FC /* Minus.swift in Sources */,
 				69BB0214279DD32C0072239E /* GameObject.swift in Sources */,
