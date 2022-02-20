@@ -21,7 +21,7 @@ var screenHeight: CGFloat?
 
 
 class GameScene: SKScene {
-    
+    var gameManager: GameManager?
     //initializers
     var backgroundImg : BackgroundImg?
     var quit : Quit?
@@ -360,6 +360,16 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        if(ScoreManager.Coins < 1)
+        {
+            gameManager?.PresentEndScene()
+            // Reset - Reset initial credit to 200 $ and bet to 0 $
+            ScoreManager.Credit = 200
+            ScoreManager.Bet = 0
+
+        }
+        
     }
 }
 

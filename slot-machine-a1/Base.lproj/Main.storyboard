@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,102 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="slot_machine_a1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scorelabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pw6-Q0-ZeB">
+                                <rect key="frame" x="69" y="159" width="81" height="21"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KWg-Tv-D7L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lives Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7X3-Gs-Wiz">
+                                <rect key="frame" x="69" y="314" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Slot Machine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd3-e6-Mp3">
+                                <rect key="frame" x="32" y="140" width="351" height="59"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmD-HZ-kiK">
+                                <rect key="frame" x="107" y="640" width="200" height="74"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="StartButton_Pressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="GxK-kb-z2R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flB-Od-jr5">
+                                <rect key="frame" x="98" y="740" width="219" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Ccz-Bt-fFf"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Restart">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="50"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="EndButton_Pressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="vW5-Yn-pch"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxb-DZ-Hc4">
+                                <rect key="frame" x="32" y="246" width="351" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="PRw-tQ-kgT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Wxb-DZ-Hc4" firstAttribute="bottom" secondItem="7X3-Gs-Wiz" secondAttribute="bottom" id="2XO-Of-UrM"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="centerY" secondItem="pw6-Q0-ZeB" secondAttribute="centerY" id="Fyv-sW-cWP"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="flB-Od-jr5" secondAttribute="bottom" constant="74" id="HgQ-lk-TH8"/>
+                            <constraint firstItem="flB-Od-jr5" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="98" id="I1u-Dl-RO9"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="P6E-CN-GiJ"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="leading" secondItem="Wxb-DZ-Hc4" secondAttribute="leading" id="RZa-r0-1cC"/>
+                            <constraint firstItem="flB-Od-jr5" firstAttribute="top" secondItem="XmD-HZ-kiK" secondAttribute="bottom" constant="26" id="TZP-QJ-rCT"/>
+                            <constraint firstItem="XmD-HZ-kiK" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="107" id="Wmb-06-c4R"/>
+                            <constraint firstItem="Wxb-DZ-Hc4" firstAttribute="centerX" secondItem="XmD-HZ-kiK" secondAttribute="centerX" id="XCF-JK-Rbh"/>
+                            <constraint firstItem="pw6-Q0-ZeB" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="115" id="bTt-RD-ABT"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="32" id="bVA-Gp-nvU"/>
+                            <constraint firstItem="XmD-HZ-kiK" firstAttribute="centerX" secondItem="flB-Od-jr5" secondAttribute="centerX" id="ohN-u3-34p"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="96" id="pnH-8e-LhV"/>
+                            <constraint firstItem="pw6-Q0-ZeB" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="69" id="vyc-kl-NOa"/>
+                            <constraint firstItem="Wxb-DZ-Hc4" firstAttribute="top" secondItem="Sd3-e6-Mp3" secondAttribute="bottom" constant="47" id="wdU-Lm-85k"/>
+                            <constraint firstItem="Sd3-e6-Mp3" firstAttribute="trailing" secondItem="Wxb-DZ-Hc4" secondAttribute="trailing" id="ya9-Wk-jAo"/>
+                            <constraint firstItem="pw6-Q0-ZeB" firstAttribute="leading" secondItem="7X3-Gs-Wiz" secondAttribute="leading" id="zt3-9g-PZr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="EndButton" destination="flB-Od-jr5" id="uEB-ia-Rpl"/>
+                        <outlet property="EndLabel" destination="Wxb-DZ-Hc4" id="vHF-UZ-Uw7"/>
+                        <outlet property="LivesLabel" destination="7X3-Gs-Wiz" id="sdY-Qu-Mwo"/>
+                        <outlet property="ScoreLabel" destination="pw6-Q0-ZeB" id="rsc-2G-IUn"/>
+                        <outlet property="StartButton" destination="XmD-HZ-kiK" id="wtf-yf-qQv"/>
+                        <outlet property="StartLabel" destination="Sd3-e6-Mp3" id="xpN-DG-3kT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-236.23188405797103" y="27.455357142857142"/>
         </scene>
     </scenes>
 </document>

@@ -13,7 +13,7 @@ class ScoreManager {
     
     public static var Credit: Int = 200
     public static var Bet: Int = 0
-     public static var Jackpot: Int = 0
-     public static var Coins: Int = 0
+    public static var Jackpot: Int = 0
+    public static var Coins: Int = 0
     
 }

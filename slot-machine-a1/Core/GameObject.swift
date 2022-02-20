@@ -65,7 +65,4 @@ class GameObject : SKSpriteNode, GameProtocol
     {
         
     }
-    
-    
-    
 }
