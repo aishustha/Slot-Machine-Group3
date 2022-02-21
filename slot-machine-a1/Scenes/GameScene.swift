@@ -31,6 +31,7 @@ class GameScene: SKScene {
     var quit : Quit?
     var spin : Spin?
     var reset: Reset?
+//    var help: Help?
     var jackpot: Jackpot?
     var coin: Coin?
     var plusBtn: Plus?
@@ -71,6 +72,8 @@ class GameScene: SKScene {
         quit?.position = CGPoint(x:190,y: 487)
         addChild(quit!)
         
+        
+        
         // Adding spin button to scene
         spin = Spin()
         spin?.name = "spin"
@@ -83,6 +86,14 @@ class GameScene: SKScene {
         reset?.name = "reset"
         reset?.position = CGPoint(x: -230, y: -570)
         addChild(reset!)
+        
+        
+        // Adding reset button to scene
+//        help = Help()
+//        help?.name = "help"
+//        help?.position = CGPoint(x: -100, y: -570)
+//        addChild(help!)
+//        
         
         // Adding jackpot img to scene
         jackpot = Jackpot()
@@ -164,10 +175,10 @@ class GameScene: SKScene {
         addChild(minusBtn!)
         
         // background music
-//        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicSerious.mp3")
-        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicLight.mp3")
-        self.addChild(backgroundMusic)
-        backgroundMusic.autoplayLooped = true // infinte loop
+
+//        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicLight.mp3")
+//        self.addChild(backgroundMusic)
+//        backgroundMusic.autoplayLooped = true // infinte loop
         
         // preload / prewarm impulse sounds
 //        do{

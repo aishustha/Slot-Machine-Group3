@@ -30,6 +30,13 @@ class GameViewController: UIViewController, GameManager {
     
     @IBOutlet weak var EndButton: UIButton!
     
+    @IBOutlet weak var HelpBtn: UIButton!
+    
+    @IBOutlet weak var CloseBtn: UIButton!
+    
+    @IBOutlet weak var HelpDesc: UITextView!
+    
+    
     var currentScene: SKScene?
     
     override func viewDidLoad() {
@@ -40,6 +47,9 @@ class GameViewController: UIViewController, GameManager {
         ScoreLabel.isHidden = true
         EndButton.isHidden = true
         EndLabel.isHidden = true
+        HelpDesc.isHidden = true
+        CloseBtn.isHidden = true
+        HelpBtn.isHidden = true
         
      
 //        ScoreManager.gameViewController = self
@@ -105,6 +115,9 @@ class GameViewController: UIViewController, GameManager {
         StartLabel.isHidden = false
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
+        HelpDesc.isHidden = true
+        CloseBtn.isHidden = true
+        HelpBtn.isHidden = true
     }
     
     func PresentEndScene()
@@ -113,7 +126,22 @@ class GameViewController: UIViewController, GameManager {
         EndLabel.isHidden = false
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
+        HelpDesc.isHidden = true
+        CloseBtn.isHidden = true
+        HelpBtn.isHidden = true
         SetScene(sceneName: "EndScene")
+    }
+    
+    func PresentHelpScene()
+    {
+        EndButton.isHidden = true
+        EndLabel.isHidden = true
+        ScoreLabel.isHidden = true
+        LivesLabel.isHidden = true
+        HelpDesc.isHidden = false
+        CloseBtn.isHidden = false
+        HelpBtn.isHidden = true
+        SetScene(sceneName: "HelpScene")
     }
     
     @IBAction func StartButton_Pressed(_ sender: UIButton) {
@@ -122,7 +150,10 @@ class GameViewController: UIViewController, GameManager {
         StartLabel.isHidden = true
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
-
+        HelpDesc.isHidden = true
+        CloseBtn.isHidden = true
+        HelpBtn.isHidden = false
+        
         ScoreManager.Jackpot = 0
         ScoreManager.Coins = 5
         updateLivesLabel()
@@ -135,10 +166,12 @@ class GameViewController: UIViewController, GameManager {
     @IBAction func EndButton_Pressed(_ sender: UIButton) {
         EndButton.isHidden = true
         EndLabel.isHidden = true
-        
         ScoreLabel.isHidden = false
         LivesLabel.isHidden = false
-
+        HelpDesc.isHidden = true
+        CloseBtn.isHidden = true
+        HelpBtn.isHidden = false
+        
         ScoreManager.Jackpot = 0
         ScoreManager.Coins = 5
         updateLivesLabel()
@@ -146,5 +179,18 @@ class GameViewController: UIViewController, GameManager {
         SetScene(sceneName: "GameScene")
     }
     
+    @IBAction func HelpButton(_ sender: UIButton) {
+        PresentHelpScene()
+        
+        
+    }
+    
+    @IBAction func CloseButton_Pressed(_ sender: UIButton) {
+        CloseBtn.isHidden = true
+        HelpDesc.isHidden = true
+        HelpBtn.isHidden = false
+        SetScene(sceneName: "GameScene")
+        
+    }
     
 }

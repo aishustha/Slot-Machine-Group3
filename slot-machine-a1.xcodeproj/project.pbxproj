@@ -28,6 +28,9 @@
 		615888D027C2CB03008A0763 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 615888CF27C2CB03008A0763 /* StartScene.sks */; };
 		615888D427C2CB5A008A0763 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615888D327C2CB5A008A0763 /* EndScene.swift */; };
 		615888D627C2CB7C008A0763 /* EndScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 615888D527C2CB7C008A0763 /* EndScene.sks */; };
+		615888D927C32CE6008A0763 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615888D827C32CE6008A0763 /* HelpScene.swift */; };
+		615888DB27C32D0B008A0763 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 615888DA27C32D0B008A0763 /* HelpScene.sks */; };
+		615888DD27C338B8008A0763 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615888DC27C338B8008A0763 /* Help.swift */; };
 		61E7AECE27A6EF920080A2FC /* Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7AECD27A6EF920080A2FC /* Reset.swift */; };
 		61E7AED027A6F4210080A2FC /* Jackpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7AECF27A6F4210080A2FC /* Jackpot.swift */; };
 		61E7AED227A6F55E0080A2FC /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7AED127A6F55E0080A2FC /* Coin.swift */; };
@@ -71,6 +74,9 @@
 		615888CF27C2CB03008A0763 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		615888D327C2CB5A008A0763 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		615888D527C2CB7C008A0763 /* EndScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndScene.sks; sourceTree = "<group>"; };
+		615888D827C32CE6008A0763 /* HelpScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
+		615888DA27C32D0B008A0763 /* HelpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HelpScene.sks; sourceTree = "<group>"; };
+		615888DC27C338B8008A0763 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		61E7AECD27A6EF920080A2FC /* Reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reset.swift; sourceTree = "<group>"; };
 		61E7AECF27A6F4210080A2FC /* Jackpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jackpot.swift; sourceTree = "<group>"; };
 		61E7AED127A6F55E0080A2FC /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -175,6 +181,8 @@
 				6107D1C7279D139600DF66AC /* GameScene.swift */,
 				615888D327C2CB5A008A0763 /* EndScene.swift */,
 				615888D527C2CB7C008A0763 /* EndScene.sks */,
+				615888D827C32CE6008A0763 /* HelpScene.swift */,
+				615888DA27C32D0B008A0763 /* HelpScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				61E7AED127A6F55E0080A2FC /* Coin.swift */,
 				61E7AED327A710650080A2FC /* Plus.swift */,
 				61E7AED527A710730080A2FC /* Minus.swift */,
+				615888DC27C338B8008A0763 /* Help.swift */,
 				69066BA827C3024C00FD809B /* GoogleService-Info.plist */,
 			);
 			path = SlotObjects;
@@ -283,6 +292,7 @@
 				2C3A5B6C27AEB45A00E1FC4B /* jackpot.mp3 in Resources */,
 				615888D627C2CB7C008A0763 /* EndScene.sks in Resources */,
 				6107D1C4279D139600DF66AC /* GameScene.sks in Resources */,
+				615888DB27C32D0B008A0763 /* HelpScene.sks in Resources */,
 				6107D1CF279D139600DF66AC /* Assets.xcassets in Resources */,
 				6107D1D2279D139600DF66AC /* LaunchScreen.storyboard in Resources */,
 				615888D027C2CB03008A0763 /* StartScene.sks in Resources */,
@@ -305,9 +315,11 @@
 				61E7AED427A710650080A2FC /* Plus.swift in Sources */,
 				6107D1CA279D139600DF66AC /* GameViewController.swift in Sources */,
 				61E7AED027A6F4210080A2FC /* Jackpot.swift in Sources */,
+				615888D927C32CE6008A0763 /* HelpScene.swift in Sources */,
 				61E7AECE27A6EF920080A2FC /* Reset.swift in Sources */,
 				6107D1C2279D139600DF66AC /* AppDelegate.swift in Sources */,
 				2C3A5B7E27AEC44300E1FC4B /* SpinManager.swift in Sources */,
+				615888DD27C338B8008A0763 /* Help.swift in Sources */,
 				2C3A5B7B27AEC27500E1FC4B /* ScoreManager.swift in Sources */,
 				69BB0211279DD29F0072239E /* BackgroundImg.swift in Sources */,
 				61E7AED627A710730080A2FC /* Minus.swift in Sources */,
