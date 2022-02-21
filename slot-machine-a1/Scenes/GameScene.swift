@@ -14,10 +14,14 @@ import UIKit
 import AVFoundation
 import SpriteKit
 import GameplayKit
+import FirebaseDatabase
 
 let screenSize = UIScreen.main.bounds
 var screenWidth: CGFloat?
 var screenHeight: CGFloat?
+var highScore: Int?
+
+//varr database : DatabaseReference!
 
 
 class GameScene: SKScene {
@@ -39,8 +43,12 @@ class GameScene: SKScene {
     
     // Array of texture to show the slot machine images
     var textures = [SKTexture]()
+    //var database: DatabaseReference!
+    // Firebase database reference
+    var database = Database.database().reference()
     
     // Labels
+    var GlobalLabel: SKLabelNode!
     var CreditLabel: SKLabelNode!
     var BetLabel: SKLabelNode!
     var JackpotAmount: SKLabelNode!
@@ -81,6 +89,14 @@ class GameScene: SKScene {
         jackpot?.name = "Jackpot"
         jackpot?.position = CGPoint(x: -219, y: 466)
         addChild(jackpot!)
+        
+        // adding Global jsckpot label
+        GlobalLabel = SKLabelNode(fontNamed: "Arial")
+        GlobalLabel.text = String(ScoreManager.Credit)
+        GlobalLabel.color = .white
+        GlobalLabel.position = CGPoint(x: -120, y: 150)
+        GlobalLabel.zPosition = 1
+        addChild(GlobalLabel)
         
         // adding credit label
         CreditLabel = SKLabelNode(fontNamed: "Arial")
@@ -343,6 +359,25 @@ class GameScene: SKScene {
         ScoreManager.Credit = ScoreManager.Coins
         CreditLabel.text = String(ScoreManager.Coins)
         BetLabel.text = String(ScoreManager.Bet)
+        
+        // Check the previous high score from database
+        
+        //let userID = Auth.auth().currentUser?.uid
+        database.child("High Score").child("USER").observeSingleEvent(of: .value, with: { snapshot in
+          // Get user value
+            let value = snapshot.value as! NSString
+          print("VALUEEEEEEEEEEEEEEEEEEEEEEEEEE \(value)")
+            self.GlobalLabel.text = value as String
+        }) { error in
+          print(error.localizedDescription)
+        }
+        var high = Int(GlobalLabel.text!)
+        if(high! < ScoreManager.Coins){
+            database.child("High Score").child("USER").setValue(String(ScoreManager.Coins))
+        }
+        
+        
+        
     }
     
    
