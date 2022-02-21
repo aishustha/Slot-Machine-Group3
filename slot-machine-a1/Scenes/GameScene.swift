@@ -176,9 +176,9 @@ class GameScene: SKScene {
         
         // background music
 
-//        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicLight.mp3")
-//        self.addChild(backgroundMusic)
-//        backgroundMusic.autoplayLooped = true // infinte loop
+        let backgroundMusic = SKAudioNode(fileNamed: "backgroundMusicLight.mp3")
+        self.addChild(backgroundMusic)
+        backgroundMusic.autoplayLooped = true // infinte loop
         
         // preload / prewarm impulse sounds
 //        do{
